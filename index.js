@@ -20,8 +20,16 @@ app.get('/', function (req, res) {
 });
 
 // your first API endpoint...
-app.get('/api/hello', function (req, res) {
-  res.json({ greeting: 'hello API' });
+app.get('/api/whoami', (req, res)=>{
+  const direcip = req.ip;
+  const idioma = req.get('Accept-Language');
+  const software = req.get('User-Agent');
+
+  res.json({
+    ipaddress: direcip,
+    language : idioma,
+    software : software
+  })
 });
 
 // listen for requests :)
